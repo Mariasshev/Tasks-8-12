@@ -478,12 +478,12 @@
         ];
 
         function showAllEmails() {
-            console.log("Электронные адреса пользователей:")
-            users.forEach(user => console.log(user.email));
+            let emailDocument = document.querySelector("#emailAddressesOutput");
+            users.forEach(user => emailDocument.innerHTML += (user.email) += "<br>");
         }
 
         function showHigestFriendCount() {
-            console.log("Пользователи с наибольшим количеством друзей");
+            let greatesFriendsCountOutput = document.querySelector("#greatesFriendsCountOutput");
 
             let max = Number.MIN_VALUE;
 
@@ -494,15 +494,20 @@
 
             users
                 .filter(user => user.friends.length == max)
-                .forEach(user => console.log(user.name.first + " " + user.name.last));
+                .forEach(user => greatesFriendsCountOutput.innerHTML += 
+                greatesFriendsCountOutput.innerHTML += 
+                user.name.first + " " + user.name.last + "<br>");
         }
 
         function showMinMaxBalance() {
+            let greatestBalanceCompanyOutput = document.querySelector("#greatestBalanceCompanyOutput");
+            let lowestBalanceCompanyOutput = document.querySelector("#lowestBalanceCompanyOutput");
+
             let minBalance = Number.MAX_VALUE;
             let maxBalance = Number.MIN_VALUE;
 
             users.forEach(user => {
-                const currentBalance = +user.balance;
+                const currentBalance =+ user.balance;
                 if (currentBalance > maxBalance)
                     maxBalance = currentBalance;
                 else if (currentBalance < minBalance) {
@@ -510,15 +515,13 @@
                 }
             });
 
-            console.log("Компании пользователей с наибольшим балансом:")
             users
                 .filter(user => user.balance == maxBalance)
-                .forEach(user => console.log(user.company));
+                .forEach(user => greatestBalanceCompanyOutput.innerHTML += user.company);
 
-            console.log("Компании пользователей с наименьшим балансом:")
             users
                 .filter(user => user.balance == minBalance)
-                .forEach(user => console.log(user.company));
+                .forEach(user => lowestBalanceCompanyOutput.innerHTML += user.company);
         }
 
         showAllEmails();

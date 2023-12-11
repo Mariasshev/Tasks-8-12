@@ -64,9 +64,9 @@
             <td>100</td>
         </tr>
         <tr>
-            <th>Итого</th>
-            <th></th>
-            <th></th>
+            <td><b>Итого:</b></td>
+            <td id="result-table-1">0</td>
+            <td id="result-table-2">0</td>
         </tr>
     </table>
 
@@ -80,7 +80,19 @@
         В div с id result выведите сообщение "Отдел 1 сделал больше продаж" или "Отдел 2 сделал больше продаж" на основе раннее вычисленных значений в строке "Итого".
         Используйте любые методы, которые были рассмотрены на в прошлых уроках.
         */
-       let 
+        let table = document.querySelector("#statsTable");
+        let size = table.rows.length;
+
+        let sum1 = 0;
+        let sum2 = 0;
+
+        for (let i = 1; i < size - 1; i++) {
+            sum1 += Number(table.rows[i].cells[1].innerHTML);
+            sum2 += Number(table.rows[i].cells[2].innerHTML);
+        }
+
+        document.querySelector("#result-table-1").innerHTML = sum1;
+        document.querySelector("#result-table-2").innerHTML = sum2; 
     </script>
 </body>
 </html>
